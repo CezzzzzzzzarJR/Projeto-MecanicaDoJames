@@ -1,0 +1,462 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    min-height: 100vh;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #3a2a1b 0%,
+            #1c1712 35%,
+            #0d0b09 100%
+        );
+
+    color: #f1e4cc;
+}
+
+
+
+
+.menu {
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 32px;
+
+    padding: 20px;
+
+    background-color: #100e0b;
+
+    border-bottom: 1px solid #80613b;
+}
+
+.link {
+
+    color: #e8d6b5;
+
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.link:hover {
+
+    color: #d6a85d;
+
+    transform: translateY(-2px);
+}
+
+
+
+
+header {
+
+    text-align: center;
+
+    padding: 65px 20px 55px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #382719,
+            #15110d
+        );
+
+    border-bottom: 3px solid #a67c45;
+}
+
+.categoria {
+
+    display: inline-block;
+
+    padding: 6px 14px;
+
+    margin-bottom: 15px;
+
+    color: #d6a85d;
+
+    border: 1px solid #a67c45;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+}
+
+header h1 {
+
+    font-size: 48px;
+
+    letter-spacing: 6px;
+
+    color: #f2dfbd;
+
+    text-shadow:
+        2px 2px 0 #5a4228;
+}
+
+header p {
+
+    margin-top: 12px;
+
+    color: #b9a88d;
+
+    font-size: 18px;
+
+    font-style: italic;
+}
+
+
+
+
+main {
+
+    width: 90%;
+
+    max-width: 1250px;
+
+    margin: auto;
+}
+
+
+
+
+.carro-detalhes {
+
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr;
+
+    gap: 35px;
+
+    align-items: stretch;
+
+    padding: 60px 0;
+}
+
+
+
+
+.foto-carro {
+
+    min-height: 520px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background-color: #15120e;
+
+    border: 1px solid #55432c;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+
+    transition: 0.3s;
+}
+
+.foto-carro:hover {
+
+    border-color: #c59a5a;
+
+    box-shadow:
+        0 0 30px rgba(197, 154, 90, 0.2);
+}
+
+.foto-carro img {
+
+    width: 100%;
+
+    height: 100%;
+
+    min-height: 520px;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+
+
+.ficha {
+
+    background-color: #17130f;
+
+    border: 1px solid #55432c;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.ficha-titulo {
+
+    padding: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3a2919,
+            #1b1510
+        );
+
+    border-bottom: 2px solid #a67c45;
+}
+
+.ficha-titulo span {
+
+    color: #d6a85d;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+}
+
+.ficha-titulo h2 {
+
+    margin-top: 8px;
+
+    font-size: 30px;
+
+    color: #ead8b9;
+}
+
+
+
+
+.dados {
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+.dado {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 20px 25px;
+
+    border-bottom: 1px solid #30271d;
+
+    transition: 0.25s;
+}
+
+.dado:hover {
+
+    background-color: #292016;
+}
+
+.dado span {
+
+    color: #9f927f;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+}
+
+.dado strong {
+
+    color: #ead8b9;
+
+    text-align: right;
+
+    font-size: 15px;
+}
+
+
+
+
+.descricao {
+
+    padding: 50px 10px;
+
+    border-top: 1px solid #30271d;
+
+    border-bottom: 1px solid #30271d;
+}
+
+.descricao > span {
+
+    color: #c59a5a;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+}
+
+.descricao h2 {
+
+    margin-top: 10px;
+
+    margin-bottom: 15px;
+
+    font-size: 36px;
+
+    color: #ead8b9;
+}
+
+.descricao p {
+
+    max-width: 850px;
+
+    color: #a99b88;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+
+
+.voltar {
+
+    text-align: center;
+
+    padding: 45px 0 70px;
+}
+
+.voltar button {
+
+    padding: 14px 30px;
+
+    background-color: transparent;
+
+    color: #d6a85d;
+
+    border: 2px solid #a67c45;
+
+    border-radius: 3px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.voltar button:hover {
+
+    background-color: #a67c45;
+
+    color: #15110d;
+
+    box-shadow:
+        0 0 20px rgba(166, 124, 69, 0.3);
+}
+
+
+
+
+footer {
+
+    padding: 35px;
+
+    text-align: center;
+
+    background-color: #0b0907;
+
+    border-top: 1px solid #55432c;
+
+    color: #756b5c;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+}
+
+
+
+@media (max-width: 850px) {
+
+    .carro-detalhes {
+
+        grid-template-columns: 1fr;
+    }
+
+    .foto-carro {
+
+        min-height: 400px;
+    }
+
+    .foto-carro img {
+
+        min-height: 400px;
+    }
+
+    header h1 {
+
+        font-size: 35px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .menu {
+
+        gap: 15px;
+
+        flex-wrap: wrap;
+    }
+
+    .dado {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .dado strong {
+
+        text-align: left;
+    }
+
+}

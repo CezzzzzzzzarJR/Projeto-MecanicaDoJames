@@ -1,0 +1,251 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0d0d0d;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+
+
+
+.menu {
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+
+    background: #111111;
+    border-bottom: 1px solid #292929;
+}
+
+.link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+
+    padding: 10px 5px;
+
+    transition: 0.3s;
+}
+
+.link:hover {
+    color: #e10600;
+}
+
+
+
+
+.chatContainer {
+    width: 700px;
+    max-width: 90%;
+
+    margin: 50px auto;
+
+    background: #151515;
+
+    border: 1px solid #292929;
+    border-radius: 12px;
+
+    padding: 25px;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+}
+
+
+
+
+#boasVindas {
+    text-align: center;
+
+    font-size: 24px;
+    margin-bottom: 25px;
+
+    color: #ffffff;
+}
+
+
+
+
+#caixaChat {
+    height: 400px;
+
+    background: #0b0b0b;
+
+    border: 1px solid #292929;
+    border-radius: 8px;
+
+    padding: 20px;
+
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+
+.msg {
+    width: fit-content;
+    max-width: 75%;
+
+    background: #202020;
+
+    padding: 10px 14px;
+
+    border-radius: 8px;
+
+    color: #eeeeee;
+
+    font-size: 15px;
+
+    line-height: 1.4;
+
+    word-wrap: break-word;
+}
+
+
+
+
+#inputArea {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+
+
+
+#mensagem {
+    flex: 1;
+
+    height: 45px;
+
+    background: #0d0d0d;
+
+    border: 1px solid #333333;
+    border-radius: 7px;
+
+    padding: 0 15px;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+#mensagem::placeholder {
+    color: #777777;
+}
+
+#mensagem:focus {
+    border-color: #e10600;
+}
+
+
+
+
+#btnEnviar {
+    width: 100px;
+    height: 45px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #e10600;
+
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+#btnEnviar:hover {
+    background: #ff1a14;
+
+    transform: scale(1.03);
+}
+
+#btnEnviar:active {
+    transform: scale(0.98);
+}
+
+#btnEnviar:disabled {
+    background: #555555;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+
+
+#caixaChat::-webkit-scrollbar {
+    width: 8px;
+}
+
+#caixaChat::-webkit-scrollbar-track {
+    background: #111111;
+}
+
+#caixaChat::-webkit-scrollbar-thumb {
+    background: #444444;
+    border-radius: 10px;
+}
+
+#caixaChat::-webkit-scrollbar-thumb:hover {
+    background: #e10600;
+}
+
+
+
+
+@media (max-width: 600px) {
+
+    .menu {
+        gap: 15px;
+        height: 60px;
+    }
+
+    .link {
+        font-size: 14px;
+    }
+
+    .chatContainer {
+        margin: 25px auto;
+        padding: 15px;
+    }
+
+    #caixaChat {
+        height: 350px;
+    }
+
+    #inputArea {
+        flex-direction: column;
+    }
+
+    #btnEnviar {
+        width: 100%;
+    }
+}

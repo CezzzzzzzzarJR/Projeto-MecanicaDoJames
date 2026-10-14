@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat com James</title>
+    <link rel="stylesheet" href="m-style-chat.css">
+</head>
+<body>
+    <nav class="menu">
+        <a class="link" href="index.html">Home</a>
+        <a class="link" href="i-galeria.html">Galeria</a>
+        <a class="link" href="i-chat.html">Chat</a>
+        <a class="link" href="i-login.html">Log-in</a>
+        <a class="link" href="i-cadastro.html">Cadastro</a>
+    </nav>
+
+    <div class="chatContainer">
+        <h2 id="boasVindas">Seja bem vindo ao Chat</h2>
+        <div id="caixaChat"></div>
+        <div id="inputArea">
+            <input type="text" id="mensagem" placeholder="Digite sua mensagem">
+            <button id="btnEnviar">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        // 1. Simulação de um nome de usuário (substitua por sua lógica de login/localStorage se houver)
+        const nomeUsuario = localStorage.getItem('usuarioLogado') || 'Usuário';
+
+        // 2. Atualiza a mensagem de boas-vindas com o texto do nome
+        document.querySelector('#boasVindas').textContent = `Olá ${nomeUsuario}, seja bem vindo`;
+
+        const caixaChat = document.querySelector('#caixaChat');
+        const inputMensagem = document.querySelector('#mensagem');
+        const btnEnviar = document.querySelector('#btnEnviar');
+        const historicoConversa = [];
+
+        // 3. Função corrigida para exibir mensagens
+        function mensagemTela(autor, texto) {
+            const textoFinal = document.createElement('p');
+            textoFinal.className = 'msg';
+            textoFinal.textContent = `${autor}: ${texto}`; // Mudado de vírgula para dois pontos para fazer mais sentido
+            caixaChat.appendChild(textoFinal);
+            
+            // Rola o chat para baixo automaticamente a cada nova mensagem
+            caixaChat.scrollTop = caixaChat.scrollHeight;
+        }
+
+        btnEnviar.addEventListener('click', async () => {
+            const textoMensagem = inputMensagem.value.trim();
+            if (!textoMensagem) return;
+
+            // Exibe a mensagem do usuário na tela usando a string do nome
+            mensagemTela(nomeUsuario, textoMensagem);
+            
+            // Alimenta o histórico no formato correto da API (geralmente 'user')
+            historicoConversa.push({ role: "user", content: textoMensagem });
+            
+            inputMensagem.value = '';
+            btnEnviar.disabled = true;
+
+            try {
+                const respostaServidor = await fetch('http://localhost:6700/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ historico: historicoConversa })
+                });
+
+                const dados = await respostaServidor.json();
+
+                if (!respostaServidor.ok) {
+                    mensagemTela('Sistema', dados.erro || 'Erro desconhecido no servidor');
+                    return;
+                }
+
+                // Exibe a resposta do James e adiciona ela também ao histórico local
+                mensagemTela('James', dados.resposta);
+                historicoConversa.push({ role: "assistant", content: dados.resposta });
+
+            } catch (erro) {
+                mensagemTela('Sistema', 'Erro ao conectar com o servidor');
+            } finally {
+                btnEnviar.disabled = false;
+                inputMensagem.focus(); // Devolve o foco para o campo de texto
+            }
+        });
+
+        // Bônus: Permitir enviar a mensagem apertando a tecla "Enter"
+        inputMensagem.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                btnEnviar.click();
+            }
+        });
+    </script>
+</body>
+</html>

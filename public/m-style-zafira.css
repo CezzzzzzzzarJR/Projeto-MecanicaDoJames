@@ -1,0 +1,263 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #cfcfcf,
+        #111111
+    );
+
+    color: white;
+}
+
+
+
+
+.menu {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 40px;
+
+    padding: 22px;
+
+    background: rgba(0, 0, 0, 0.9);
+
+    border-bottom: 1px solid #444;
+}
+
+.link {
+    position: relative;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    padding: 5px 0;
+
+    transition: 0.3s;
+}
+
+.link:hover {
+    color: #ccc;
+}
+
+
+
+
+.carro-container {
+    width: 90%;
+    max-width: 1400px;
+
+    min-height: calc(100vh - 80px);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1.6fr 1fr;
+
+    gap: 40px;
+
+    align-items: center;
+
+    padding: 50px 0;
+}
+
+
+
+
+.foto-carro {
+    width: 100%;
+    height: 650px;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+.foto-carro img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    border-radius: 15px;
+}
+
+.foto-carro:hover img {
+    transform: scale(1.03);
+}
+
+
+
+
+.ficha {
+    padding: 40px;
+
+    background: rgba(0, 0, 0, 0.85);
+
+    border-radius: 15px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.ficha h1 {
+    font-size: 40px;
+
+    margin-bottom: 15px;
+}
+
+.descricao {
+    color: #bbb;
+
+    font-size: 16px;
+
+    line-height: 1.6;
+}
+
+.linha {
+    width: 100%;
+
+    height: 1px;
+
+    background-color: #444;
+
+    margin: 30px 0;
+}
+
+.ficha h2 {
+    font-size: 25px;
+
+    margin-bottom: 20px;
+}
+
+
+
+
+.dados {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+}
+
+.dado {
+    padding: 15px;
+
+    background-color: rgba(255, 255, 255, 0.08);
+
+    border-radius: 8px;
+
+    border: 1px solid #333;
+}
+
+.dado span {
+    display: block;
+
+    color: #999;
+
+    font-size: 13px;
+
+    margin-bottom: 5px;
+}
+
+.dado strong {
+    font-size: 16px;
+}
+
+
+
+
+.voltar {
+    display: inline-block;
+
+    margin-top: 30px;
+
+    padding: 12px 20px;
+
+    color: white;
+
+    text-decoration: none;
+
+    border: 1px solid white;
+
+    border-radius: 5px;
+
+    transition: 0.3s;
+}
+
+.voltar:hover {
+    background-color: white;
+
+    color: black;
+}
+
+
+
+
+@media (max-width: 900px) {
+
+    .carro-container {
+        grid-template-columns: 1fr;
+
+        padding: 30px 0;
+    }
+
+    .foto-carro {
+        height: 450px;
+    }
+
+    .ficha {
+        padding: 30px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .menu {
+        gap: 15px;
+
+        flex-wrap: wrap;
+    }
+
+    .link {
+        font-size: 14px;
+    }
+
+    .foto-carro {
+        height: 300px;
+    }
+
+    .ficha h1 {
+        font-size: 30px;
+    }
+
+    .dados {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+

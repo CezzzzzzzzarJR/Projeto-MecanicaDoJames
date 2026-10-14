@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat com James</title>
+    <link rel="stylesheet" href="m-style-chat.css">
+
+</head>
+<body>
+    <nav class="menu">
+        <a class="link" href="index.html">Home</a>
+        <a class="link" href="i-galeria.html">Galeria</a>
+        <a class="link" href="i-chat.html">Chat</a>
+        <a class="link" href="i-login.html">Log-in</a>
+        <a class="link" href="i-cadastro.html">Cadastro</a>
+    </nav>
+
+<div class="chatContainer">
+    <h2 id="boasVindas"> Seja bem vindo ao Chat</h2>
+    <div id="caixaChat"></div>
+
+    <div id="inputArea">
+        <input type="text" id="mensagem" placeholder="Digite sua mensagem">
+        <button id="btnEnviar">Enviar</button>
+
+    </div>
+</div>
+
+<script>
+const usuarioLogado=document.querySelector('#cadUsuario')
+
+document.querySelector('#boasVindas').textContent=`Olá ${usuarioLogado}, seja bem vindo`
+const caixaChat=document.querySelector('#caixaChat')
+const inputMensagem=document.querySelector('#mensagem')
+const btnEnviar=document.querySelector('#btnEnviar')
+
+const historicoConversa=[ ]
+
+function mensagemTela (autor, texto){
+
+    const textoFinal=document.createElement('p')
+    textoFinal.className='msg'
+    textoFinal.textContent=`${autor}, ${texto}`
+    caixaChat.appendChild(textoFinal)}
+
+btnEnviar.addEventListener('click', async()=>{
+    const textoMensagem=inputMensagem.value.trim()
+
+    if (!textoMensagem)return
+
+    mensagemTela(usuarioLogado, textoMensagem)
+    historicoConversa.push({role:"user", content:textoMensagem})
+
+    inputMensagem.value=''
+    btnEnviar.disabled=true
+
+    try{
+        const respostaServidor= await fetch('http://localhost:6700/chat', {
+            method:'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ historico: historicoConversa})
+        })
+
+        const dados=  await respostaServidor.json()
+        if (!respostaServidor.ok) {
+
+       
+        mensagemTela('system',dados.erro )
+        return}
+
+        mensagemTela('James',dados.resposta )
+    }
+    catch(erro){
+        mensagemTela('Sistema', 'Erro ao conectar com o servidor')
+    }
+    finally{
+        btnEnviar.disabled=false
+    }
+
+})
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+   
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="m-style-login.css" />
+</head>
+
+<body>
+    <nav class="menu">
+        <a class="link" href="index.html">Home</a>
+        <a class="link" href="i-galeria.html">Galeria</a>
+        <a class="link" href="i-chat.html">Chat</a>
+        <a class="link" href="i-login.html">Log-in</a>
+        <a class="link" href="i-cadastro.html">Cadastro</a>
+    </nav>
+    
+    <div class="conteiner-cadastro">
+        <div class="conteiner-ch1">
+            <h2>Login</h2><br>
+        </div>
+
+        <div class="login">
+           
+
+            <label for="loginEmail">Email</label><br>
+            <input type="email" id="loginEmail" placeholder="Digite seu email" required><br><br>
+
+            <label for="loginSenha">Senha</label><br>
+            <input type="password" id="loginSenha" placeholder="Digite sua senha" required><br><br>
+
+            <button id="btnlogin" >Enviar</button>
+            <div id="loginMensagem" class="mensagem"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>CZR - Copyright</p>
+    </footer>
+
+    <script>
+        const btnlogin = document.querySelector('#btnlogin');
+        const loginMensagem = document.querySelector('#loginMensagem');
+
+        btnlogin.addEventListener('click', async ()=>{
+          
+            const emailEntrada = document.querySelector('#loginEmail');
+            const senhaEntrada = document.querySelector('#loginSenha');
+
+            
+            const email = emailEntrada.value;
+            const senha = senhaEntrada.value;
+
+            if ( !email || !senha) {
+                loginMensagem.innerText = 'Preencha todos os campos antes de enviar!'
+                loginMensagem.style.color = 'red';
+                return;
+            }
+
+            loginMensagem.innerText = 'Dados enviados aguarde 5 segundos...';
+            loginMensagem.style.color = 'orange';
+
+            try{
+                const respostaBE = await fetch('http://localhost:6700/login', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        
+                        email: email,
+                        senha: senha
+                    })
+                });
+
+                const dados = await respostaBE.json();
+
+                if(!respostaBE.ok) {
+                    loginMensagem.innerText = `${dados.erro}`;
+                    loginMensagem.style.color = 'red';
+                    return;
+                }
+
+                loginMensagem.innerText = `${dados.mensagem}: ${dados.perfil}`;
+                loginMensagem.style.color = 'green';
+
+                
+                emailEntrada.value = '';
+                senhaEntrada.value = '';
+            }
+            catch(erro) {
+                console.error('Erro na requisição:', erro);
+                loginMensagem.innerText = 'Erro ao conectar com o servidor!!';
+                loginMensagem.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+
+</html>

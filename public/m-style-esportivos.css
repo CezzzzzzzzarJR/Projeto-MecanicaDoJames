@@ -1,0 +1,360 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        radial-gradient(circle at top, #250000 0%, #080808 35%, #000000 100%);
+
+    color: white;
+}
+
+
+
+
+.menu {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 35px;
+
+    padding: 20px;
+
+    background-color: #080808;
+
+    border-bottom: 1px solid #500000;
+}
+
+.link {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    padding: 8px 5px;
+
+    transition: 0.25s;
+}
+
+.link:hover {
+    color: #ff0000;
+
+    transform: translateY(-2px);
+}
+
+
+
+
+header {
+    text-align: center;
+
+    padding: 65px 20px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #160000,
+            #080808
+        );
+
+    border-bottom: 2px solid #b00000;
+}
+
+header h1 {
+    font-size: 48px;
+
+    letter-spacing: 7px;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+header p {
+    margin-top: 12px;
+
+    color: #aaa;
+
+    font-size: 18px;
+}
+
+
+
+
+main {
+    width: 90%;
+
+    max-width: 1200px;
+
+    margin: auto;
+}
+
+
+
+
+.introducao {
+    text-align: center;
+
+    padding: 45px 20px;
+}
+
+.introducao h2 {
+    font-size: 38px;
+
+    margin-bottom: 12px;
+
+    color: white;
+
+    text-transform: uppercase;
+}
+
+.introducao p {
+    color: #999;
+
+    font-size: 17px;
+}
+
+
+
+
+.vitrine {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 30px;
+
+    padding: 20px 0 80px;
+}
+
+
+
+
+.carro {
+    position: relative;
+
+    background-color: #151515;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    border: 1px solid #333;
+
+    transition: 0.3s;
+}
+
+.carro::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background-color: #700000;
+
+    transition: 0.3s;
+
+    z-index: 2;
+}
+
+.carro:hover {
+    transform: translateY(-8px);
+
+    border-color: #ff0000;
+
+    box-shadow:
+        0 0 25px rgba(255, 0, 0, 0.35);
+}
+
+.carro:hover::before {
+    background-color: #ff0000;
+
+    box-shadow:
+        0 0 15px rgba(255, 0, 0, 0.8);
+}
+
+
+
+
+.carro img {
+    width: 100%;
+
+    height: 280px;
+
+    object-fit: contain;
+
+    display: block;
+
+    background-color: #151515;
+
+    transition: 0.3s;
+}
+
+.carro:hover img {
+    transform: scale(1.03);
+}
+
+
+
+
+.info-carro {
+    padding: 25px;
+}
+
+.categoria {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    padding: 5px 10px;
+
+    color: #ff0000;
+
+    border: 1px solid #800000;
+
+    border-radius: 4px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+.info-carro h3 {
+    font-size: 25px;
+
+    margin-bottom: 10px;
+}
+
+.info-carro p {
+    color: #999;
+
+    line-height: 1.5;
+
+    margin-bottom: 20px;
+}
+
+
+
+
+.info-carro button {
+    padding: 12px 25px;
+
+    background-color: white;
+
+    color: black;
+
+    border: none;
+
+    border-radius: 5px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.info-carro button:hover {
+    background-color: #ff0000;
+
+    color: white;
+
+    box-shadow:
+        0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+
+
+
+footer {
+    text-align: center;
+
+    padding: 70px 20px;
+
+    background-color: #050505;
+
+    border-top: 1px solid #500000;
+}
+
+footer h2 {
+    font-size: 28px;
+
+    margin-bottom: 25px;
+}
+
+
+
+
+.botao-final {
+    padding: 14px 35px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    color: white;
+
+    background-color: transparent;
+
+    border: 2px solid #ff0000;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.botao-final:hover {
+    background-color: #ff0000;
+
+    color: white;
+
+    box-shadow:
+        0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+
+
+
+@media (max-width: 700px) {
+
+    .vitrine {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 35px;
+
+        letter-spacing: 4px;
+    }
+
+    .menu {
+        gap: 15px;
+
+        flex-wrap: wrap;
+    }
+}
